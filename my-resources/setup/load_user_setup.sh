@@ -1,7 +1,4 @@
 #!/bin/bash
-
-cat tmux/tmux.conf >> ~/.exegol/my-resources/setup/tmux/tmux.conf
-
 mkdir -p /opt/resources/{windows,linux} && mv ./windows/* /opt/resources/windows/ && mv ./linux/* /opt/resources/linux/
 
 # Install packages
@@ -42,6 +39,9 @@ wget -P /tmp https://github.com/RickdeJager/stegseek/releases/download/v0.6/steg
 apt install -y ./stegseek_0.6-1.deb
 
 chmod +x -R /opt/resources/linux /opt/resources/windows
+
+# Tmux 
+cd ~/ && git clone https://github.com/gpakosz/.tmux.git && ln -s -f .tmux/.tmux.conf && cp .tmux/.tmux.conf.local .
 
 # Configure SSH
 echo "PermitRootLogin prohibit-password" >> /etc/ssh/sshd_config
