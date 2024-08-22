@@ -46,6 +46,7 @@ alias get-du='du -ch -d 1'
 alias urldecode="python3 -c \"import sys; from urllib.parse import unquote; print(unquote(sys.argv[1]))\""
 alias urlencode="python3 -c \"import sys; from urllib.parse import quote; print(quote(sys.argv[1], safe=''))\""
 alias urlencode-deep='f(){ echo -n "$1" | xxd -p | tr -d "\n" | sed "s#..#%&#g";  unset -f f; }; f'
+alias kfaketime='faketime "$(date +\%Y-%m-%d\") $(net time -S $DC_IP | awk \"{ print $4; }\")"'
 
 # Cover
 alias moonwalk='/opt/resources/linux/moonwalk'
@@ -79,7 +80,7 @@ alias fu='ffuf -mc all -t 2 -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) Appl
 alias vgrep='f(){ grep -rnH "$1" "$2" | fzf --preview="bat --pager never --color always -H {2} -r {2}: -p {1}" --delimiter=: ;  unset -f f; }; f'
 alias vfuzz='vim `fzf --preview="cat {}" --preview-window=right:70%:wrap`'
 alias efuzz='bash -c '"'"'set -e; main() { previous_file="$1"; file_to_edit=$(fzf --preview="cat {}" --preview-window=right:70%:wrap --query="$previous_file"); if [ -n "$file_to_edit" ]; then vim "$file_to_edit"; main "$file_to_edit"; fi }; main ""'"'"
-
+alias g='echo "export $1='\''$2'\''" >> /opt/tools/Exegol-history/profile.sh;exec zsh'
 
 
 wgdrive() {
