@@ -19,6 +19,22 @@ nuclei -t /opt/cipher387-juicyinfo-nuclei-templates/juicy_info/email.yaml -l url
 MetaDetective -d $FOLDER
 MetaDetective --scraping --scan --url $URL
 hekatomb -hashes :ed0052e5a66b1c8e942cc9481a50d56 DOMAIN.local/administrator@10.0.0.1 -debug
+volatility3 -f $TARGET windows.info
+volatility3 -f $TARGET windows.malfind
+volatility3 -f $TARGET windows.filescan
+volatility3 -f $TARGET windows.cmdline
+volatility3 -f $TARGET windows.psscan
+volatility3 -f $TARGET windows.pstree
+volatility3 -f $TARGET windows.dlllist
+volatility3 -f $TARGET windows.registry.hivelist
+volatility3 -f $TARGET windows.handles|grep <pid>
+volatility3 -f $TARGET windows.registry.printkey.PrintKey --key <KEY> --recurse
+volatility3 -f $TARGET -o . windows.memmap.Memmap --pid <PID> --dump
+volatility3 -f $TARGET -o . windows.dumpfiles --physaddr <offset>
+volatility3 -f $TARGET -o . windows.dumpfiles --virtaddr <offset>
+volatility2 -f $TARGET imageinfo
+volatility2 -f $TARGET --profile=<profile> dumpregistry -D .
+
 
 echo '{"key":"[API_KEY]","cursor":0,"mode":"API"}' | \
   http POST https://api.byword.ai/list_articles \

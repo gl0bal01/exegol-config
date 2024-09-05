@@ -82,7 +82,6 @@ alias vfuzz='vim `fzf --preview="cat {}" --preview-window=right:70%:wrap`'
 alias efuzz='bash -c '"'"'set -e; main() { previous_file="$1"; file_to_edit=$(fzf --preview="cat {}" --preview-window=right:70%:wrap --query="$previous_file"); if [ -n "$file_to_edit" ]; then vim "$file_to_edit"; main "$file_to_edit"; fi }; main ""'"'"
 alias g='echo "export $1='\''$2'\''" >> /opt/tools/Exegol-history/profile.sh;exec zsh'
 
-
 wgdrive() {
   if [ -z "$1" ] || [ -z "$2" ]; then
     echo "Usage: wgdrive <file_id> <output_file>"
@@ -100,8 +99,6 @@ wgdrive() {
   wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$CONFIRM&id=$1" -O "$2"
   rm -f /tmp/cookies.txt
 }
-
-
 
 mkcd() {
   if [ ! -n "$1" ]; then

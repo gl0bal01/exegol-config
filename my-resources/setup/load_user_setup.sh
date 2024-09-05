@@ -2,7 +2,7 @@
 mkdir -p /opt/resources/{windows,linux} && mv ./windows/* /opt/resources/windows/ && mv ./linux/* /opt/resources/linux/
 
 # Install packages
-apt install -y expect nikto arp-scan snmp-mibs-downloader flameshot fish httpie wfuzz whatweb xeuledoc cryptsetup mutt
+apt install -y expect nikto arp-scan snmp-mibs-downloader fish httpie wfuzz whatweb xeuledoc cryptsetup mutt flameshot codium
 
 # Python package installations
 pip3 install uploadserver hekatomb wsgidav cheroot pyftpdlib instaloader chiasmodon socialscan MetaDetective mmh3 smbclientng
@@ -42,6 +42,9 @@ chmod +x -R /opt/resources/linux /opt/resources/windows
 
 # Tmux 
 cd ~/ && git clone https://github.com/gpakosz/.tmux.git && ln -s -f .tmux/.tmux.conf && cp .tmux/.tmux.conf.local .
+
+# Vim
+echo -e '#!/bin/bash\nVIMENV=prev vim "$@"' > /usr/local/bin/vimprev && chmod +x /usr/local/bin/vimprev
 
 # Configure SSH
 echo "PermitRootLogin prohibit-password" >> /etc/ssh/sshd_config

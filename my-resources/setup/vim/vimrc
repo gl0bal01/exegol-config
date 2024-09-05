@@ -1,0 +1,6 @@
+if $VIMENV == 'prev'
+  noremap <Space> :n<CR>
+  noremap <Backspace> :N<CR>
+  noremap <C-D> :call delete(expand('%')) <bar> argdelete % <bar> bdelete<CR>
+  set noswapfile
+endif
