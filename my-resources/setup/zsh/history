@@ -34,7 +34,8 @@ volatility3 -f $TARGET -o . windows.dumpfiles --physaddr <offset>
 volatility3 -f $TARGET -o . windows.dumpfiles --virtaddr <offset>
 volatility2 -f $TARGET imageinfo
 volatility2 -f $TARGET --profile=<profile> dumpregistry -D .
-
+mise ls
+mise plugins ls-remote|fzf
 
 echo '{"key":"[API_KEY]","cursor":0,"mode":"API"}' | \
   http POST https://api.byword.ai/list_articles \

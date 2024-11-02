@@ -6,3 +6,5 @@ https://addons.mozilla.org/fr/firefox/addon/to-google-translate/
 https://addons.mozilla.org/fr/firefox/addon/open-multiple-urls/
 https://addons.mozilla.org/fr/firefox/addon/multi-account-containers/
 https://addons.mozilla.org/fr/firefox/addon/keepassxc-browser/
+https://addons.mozilla.org/fr/firefox/addon/pwnfox/
+#https://github.com/bpc-clone/bypass-paywalls-firefox-clean

@@ -2,10 +2,11 @@
 mkdir -p /opt/resources/{windows,linux} && mv ./windows/* /opt/resources/windows/ && mv ./linux/* /opt/resources/linux/
 
 # Install packages
-apt install -y expect nikto arp-scan snmp-mibs-downloader fish httpie wfuzz whatweb xeuledoc cryptsetup mutt flameshot codium
+apt update
+apt install -y expect nikto arp-scan snmp-mibs-downloader fish httpie wfuzz whatweb mutt flameshot ripgrep fd-find cryptsetup
 
 # Python package installations
-pip3 install uploadserver hekatomb wsgidav cheroot pyftpdlib instaloader chiasmodon socialscan MetaDetective mmh3 smbclientng
+pip3 install uploadserver hekatomb wsgidav cheroot pyftpdlib instaloader chiasmodon socialscan MetaDetective mmh3 smbclientng xeuledoc
 pipx install git+https://github.com/nccgroup/GTFOBLookup.git
 pipx install ghunt gitfive secator
 
@@ -13,14 +14,15 @@ pipx install ghunt gitfive secator
 git clone https://github.com/cipher387/juicyinfo-nuclei-templates /opt/cipher387-juicyinfo-nuclei-templates
 git clone https://github.com/chrislockard/api_wordlist.git /opt/api_wordlist
 git clone https://github.com/r3motecontrol/Ghostpack-CompiledBinaries.git /opt/resources/windows
-git clone https://github.com/Idov31/MrKaplan.git /opt/resources/windows
+#git clone https://github.com/Idov31/MrKaplan.git /opt/resources/windows
 git clone https://github.com/CoolHandSquid/TireFire.git /opt/tools/TireFire && (cd /opt/tools/TireFire && ./Build.sh)
-git clone https://github.com/Kr0wZ/SnapIntel.git /opt/tools/SnapIntel && pip install -r /opt/tools/SnapIntel/requirements.txt
-git clone https://github.com/alfredredbird/tookie-osint /opt/tools/tookie-osint && pip3 install -r /opt/tools/tookie-osint/requirements.txt
+#git clone https://github.com/Kr0wZ/SnapIntel.git /opt/tools/SnapIntel && pip install -r /opt/tools/SnapIntel/requirements.txt
+#git clone https://github.com/alfredredbird/tookie-osint /opt/tools/tookie-osint && pip3 install -r /opt/tools/tookie-osint/requirements.txt
 git clone https://github.com/Frozenka/uploader.git /opt/tools/uploader && pip3 install -r /opt/tools/uploader/requirements.txt
-git clone https://github.com/N0rz3/Zehef.git /opt/tools/Zehef && pip3 install -r /opt/tools/Zehef/requirements.txt
-git clone https://github.com/Datalux/Osintgram.git /opt/tools/Osintgram && cd /opt/tools/Osintgram && python3 -m venv env && source env/bin/activate && pip install -r requirements.txt
-git clone https://github.com/dalunacrobate/DaProfiler.git /opt/tools/DaProfiler && cd /opt/tools/DaProfiler && pip install -r requirements.txt
+#git clone https://github.com/N0rz3/Zehef.git /opt/tools/Zehef && pip3 install -r /opt/tools/Zehef/requirements.txt
+#git clone https://github.com/Datalux/Osintgram.git /opt/tools/Osintgram && cd /opt/tools/Osintgram && python3 -m venv env && source env/bin/activate && pip install -r requirements.txt
+#git clone https://github.com/dalunacrobate/DaProfiler.git /opt/tools/DaProfiler && cd /opt/tools/DaProfiler && pip install -r requirements.txt
+git clone https://github.com/gl0bal01/scripts.git /opt/resources/linux/global01
 
 # Wordlists
 wget -P /opt https://raw.githubusercontent.com/insidetrust/statistically-likely-usernames/master/jsmith.txt
@@ -36,16 +38,35 @@ wget -P /opt/resources/linux https://github.com/mufeedvh/moonwalk/releases/downl
 wget -P /opt/resources/linux https://raw.githubusercontent.com/laluka/pty4all/master/socat-multi-handler.sh
 
 wget -P /tmp https://github.com/RickdeJager/stegseek/releases/download/v0.6/stegseek_0.6-1.deb
-apt install -y ./stegseek_0.6-1.deb
+apt install -y /tmp/stegseek_0.6-1.deb
 
 chmod +x -R /opt/resources/linux /opt/resources/windows
 
 # Tmux 
-cd ~/ && git clone https://github.com/gpakosz/.tmux.git && ln -s -f .tmux/.tmux.conf && cp .tmux/.tmux.conf.local .
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+curl -o $HOME/.tmux.conf https://raw.githubusercontent.com/gl0bal01/confs/refs/heads/main/tmux.conf
 
 # Vim
 echo -e '#!/bin/bash\nVIMENV=prev vim "$@"' > /usr/local/bin/vimprev && chmod +x /usr/local/bin/vimprev
 
+# Mise
+curl https://mise.run | sh
+echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
+echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
+echo '~/.local/bin/mise activate fish | source' >> ~/.config/fish/config.fish
+
 # Configure SSH
 echo "PermitRootLogin prohibit-password" >> /etc/ssh/sshd_config
 echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+
+# Fish
+function install_fish_plugins {
+  /usr/bin/fish -c "
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish -o ~/.config/fish/functions/fisher.fish;
+    fisher install jorgebucaran/fisher;
+    fisher install jorgebucaran/nvm.fish;
+    fisher install PatrickF1/fzf.fish
+  "
+}
+
+install_fish_plugins
