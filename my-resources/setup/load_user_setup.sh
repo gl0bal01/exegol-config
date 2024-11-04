@@ -9,6 +9,7 @@ apt install -y expect nikto arp-scan snmp-mibs-downloader fish httpie wfuzz what
 pip3 install uploadserver hekatomb wsgidav cheroot pyftpdlib instaloader chiasmodon socialscan MetaDetective mmh3 smbclientng xeuledoc
 pipx install git+https://github.com/nccgroup/GTFOBLookup.git
 pipx install ghunt gitfive secator
+REFINERY_PREFIX=r. pip install -U binary-refinery
 
 # Clone repositories
 git clone https://github.com/cipher387/juicyinfo-nuclei-templates /opt/cipher387-juicyinfo-nuclei-templates
