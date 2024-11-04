@@ -3,7 +3,7 @@ mkdir -p /opt/resources/{windows,linux} && mv ./windows/* /opt/resources/windows
 
 # Install packages
 apt update
-apt install -y expect nikto arp-scan snmp-mibs-downloader fish httpie wfuzz whatweb mutt flameshot ripgrep fd-find cryptsetup
+apt install -y expect nikto arp-scan snmp-mibs-downloader fish httpie wfuzz whatweb mutt flameshot ripgrep fd-find cryptsetup qpdf
 
 # Python package installations
 pip3 install uploadserver hekatomb wsgidav cheroot pyftpdlib instaloader chiasmodon socialscan MetaDetective mmh3 smbclientng xeuledoc
