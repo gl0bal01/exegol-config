@@ -46,9 +46,12 @@ chmod +x -R /opt/resources/linux /opt/resources/windows
 # Tmux 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 curl -o $HOME/.tmux.conf https://raw.githubusercontent.com/gl0bal01/confs/refs/heads/main/tmux.conf
+# Then install tpm ctrl+shift+I
 
 # Vim
 echo -e '#!/bin/bash\nVIMENV=prev vim "$@"' > /usr/local/bin/vimprev && chmod +x /usr/local/bin/vimprev
+git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
+# Then run :MasonInstallAll
 
 # Mise
 curl https://mise.run | sh
