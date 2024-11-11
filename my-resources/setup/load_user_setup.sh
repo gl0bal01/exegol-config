@@ -57,7 +57,7 @@ git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
 curl https://mise.run | sh
 echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
 echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
-echo '~/.local/bin/mise activate fish | source' >> ~/.config/fish/config.fish
+#echo '~/.local/bin/mise activate fish | source' >> ~/.config/fish/config.fish
 
 # Configure SSH
 echo "PermitRootLogin prohibit-password" >> /etc/ssh/sshd_config
@@ -73,4 +73,4 @@ function install_fish_plugins {
   "
 }
 
-install_fish_plugins
+#install_fish_plugins

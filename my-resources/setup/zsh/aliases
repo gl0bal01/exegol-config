@@ -88,6 +88,7 @@ alias vfuzz='vim `fzf --preview="cat {}" --preview-window=right:70%:wrap`'
 alias efuzz='bash -c '"'"'set -e; main() { previous_file="$1"; file_to_edit=$(fzf --preview="cat {}" --preview-window=right:70%:wrap --query="$previous_file"); if [ -n "$file_to_edit" ]; then vim "$file_to_edit"; main "$file_to_edit"; fi }; main ""'"'"
 alias g='f() { if [ $# -eq 2 ]; then echo "export $1=\"$2\"" >> /opt/tools/Exegol-history/profile.sh && exec zsh; else echo "Usage: g VARIABLE_NAME value"; fi }; f'
 alias sysdig='docker run --rm -it --privileged --net=host -v /var/run/docker.sock:/host/var/run/docker.sock -v /dev:/host/dev -v /proc:/host/proc:ro -v /boot:/host/boot:ro -v /src:/src -v /lib/modules:/host/lib/modules:ro -v /usr:/host/usr:ro -v /etc:/host/etc:ro -d --name sysdig docker.io/sysdig/sysdig'
+alias secure_flag='cat flag.txt && echo "Win!!!" > flag.txt && chown -R root:root flag.txt && chmod 600 flag.txt'
 
 wgdrive() {
   if [ -z "$1" ] || [ -z "$2" ]; then
